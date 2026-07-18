@@ -1,0 +1,40 @@
+.navbar
+{
+    height:80px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    margin-bottom:20px;
+}
+
+.searchbox
+{
+    width:420px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#F5F5F5;
+    padding:12px 18px;
+    border-radius:30px;
+}
+
+.searchBox input{
+    border:none;
+    outline:none;
+
+    width:100%;
+
+    font-size:16px;
+}
+
+.navicons{
+    display:flex;
+    gap:25px;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
