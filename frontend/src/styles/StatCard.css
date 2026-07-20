@@ -1,0 +1,28 @@
+.statCard{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.statCard:hover{
+    transform:translateY(-5px);
+}
+
+.icon{
+    font-size:35px;
+}
+
+.statCard h2{
+    margin:0;
+    color:#3E2723;
+}
+
+.statCard p{
+    margin-top:5px;
+    color:gray;
+}
