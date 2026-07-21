@@ -78,3 +78,24 @@
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:25px;
 }
+.books-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.add-book-btn{
+    background:#5D4037;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.add-book-btn:hover{
+    background:#3E2723;
+}

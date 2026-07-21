@@ -38,3 +38,28 @@
 
     cursor:pointer;
 }
+
+.category-filter {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.category-filter button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #e8e8e8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-filter button:hover {
+    background: #d6d6d6;
+}
+
+.category-filter .active {
+    background: #5D4037;
+    color: white;
+}

@@ -112,3 +112,35 @@
 .borrow-btn:hover{
     background:#3E2723;
 }
+.book-actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.book-actions button{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.edit-btn{
+    background:#1976D2;
+    color:white;
+}
+
+.edit-btn:hover{
+    background:#1259a8;
+}
+
+.delete-btn{
+    background:#D32F2F;
+    color:white;
+}
+
+.delete-btn:hover{
+    background:#B71C1C;
+}

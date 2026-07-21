@@ -1,9 +1,34 @@
 import "./../styles/Dashboard.css";
 import StatCard from "../components/StatCard";
 import BookCard from "../components/BookCard";
-import books from "../data/books";
 
-function Dashboard() {
+
+function Dashboard( { books , setBooks , search , category , setShowModal , setSelectedBook}) {
+    const handleDelete = (id) => {
+
+    const updatedBooks = books.filter((book) => book.id !== id);
+
+    setBooks(updatedBooks);
+
+};
+const handleEdit = (book) => {
+
+    setSelectedBook(book);
+
+    setShowModal(true);
+
+};
+
+    const filteredBooks = books.filter((book) =>{
+         const matchesSearch =
+         book.title.toLowerCase().includes(search.toLowerCase()) ||
+    book.author.toLowerCase().includes(search.toLowerCase());
+
+  const matchesCategory =
+    category === "All" || book.category === category;
+
+  return matchesSearch && matchesCategory;
+    });
     return(
         <div className="dashboard">
             <div className="hero">
@@ -46,27 +71,39 @@ function Dashboard() {
 
 <section className="bookshelf">
 
+   <div className="books-header">
+
     <h2>Featured Books</h2>
+
+    <button
+        className="add-book-btn"
+        onClick={() => setShowModal(true)}
+    >
+        + Add Book
+    </button>
+
+</div>
 
     <div className="book-grid">
 
-       <div className="book-grid">
+       
 
-    {books.map((book) => (
+    {filteredBooks.map((book) => (
 
         <BookCard
             key={book.id}
+              id={book.id}
             title={book.title}
             author={book.author}
             category={book.category}
             status={book.status}
             progress={book.progress}
             image={book.image}
+            onDelete={handleDelete}
+            onEdit={() => handleEdit(book)}
         />
 
     ))}
-
-</div>
 
     </div>
 
