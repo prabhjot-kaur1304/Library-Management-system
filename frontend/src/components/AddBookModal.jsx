@@ -3,8 +3,11 @@ import "../styles/AddBookModal.css";
 
 function AddBookModal({ books,
     setBooks,
-    setShowModal}) {
-    const [newBook, setNewBook] = useState({
+    setShowModal,
+    selectedBook,
+    setSelectedBook}) {
+    const [newBook, setNewBook] = useState(
+        selectedBook ||{
     title: "",
     author: "",
     category: "Programming",
@@ -13,14 +16,25 @@ function AddBookModal({ books,
     progress: 0,
 });
 const handleAddBook = () => {
+if (selectedBook) {
+    const updatedBooks = books.map((book) =>
+            book.id === selectedBook.id
+                ? { ...selectedBook, ...newBook }
+                : book
+        );
 
+        setBooks(updatedBooks);
+
+        setSelectedBook(null);
+
+    } else {
     const book = {
         id: Date.now(),
         ...newBook
     };
 
     setBooks([...books, book]);
-
+}
     setShowModal(false);
 };
     return (
@@ -28,7 +42,7 @@ const handleAddBook = () => {
 
             <div className="modal">
 
-                <h2>Add New Book</h2>
+                <h2> {selectedBook ? "Edit Book" : "Add New Book"}</h2>
 
 <input
     type="text"
@@ -99,7 +113,7 @@ const handleAddBook = () => {
         className="save-btn"
         onClick={handleAddBook}
     >
-        Add Book
+        {selectedBook ? "Update Book" : "Add Book"}
     </button>
 
 </div>

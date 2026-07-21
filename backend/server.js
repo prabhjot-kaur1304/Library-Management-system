@@ -1,8 +1,8 @@
 import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import bookRoutes from "./routes/bookRoutes.js";
 
 dotenv.config();
 
@@ -13,6 +13,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Routes
+app.use("/api/books", bookRoutes);
+
+// Home Route
 app.get("/", (req, res) => {
     res.send("LibraryHub API Running...");
 });

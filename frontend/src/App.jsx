@@ -37,6 +37,8 @@ function App()
         books={books}
         setBooks={setBooks}
         setShowModal={setShowModal}
+        selectedBook={selectedBook}
+        setSelectedBook={setSelectedBook}
     />
 )}
       </div>
