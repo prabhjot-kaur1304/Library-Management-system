@@ -166,4 +166,4 @@ This project demonstrates:
 
 ## Author
 
-Developed by Jot as a MERN Stack learning project.
+Developed by Prabhjot as a MERN Stack learning project.
