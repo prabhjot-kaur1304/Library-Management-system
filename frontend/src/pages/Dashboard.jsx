@@ -1,14 +1,26 @@
 import "./../styles/Dashboard.css";
 import StatCard from "../components/StatCard";
 import BookCard from "../components/BookCard";
-
+import API from "../api/bookApi";
 
 function Dashboard( { books , setBooks , search , category , setShowModal , setSelectedBook}) {
-    const handleDelete = (id) => {
+    
 
-    const updatedBooks = books.filter((book) => book.id !== id);
+    const handleDelete = async (id) => {
 
-    setBooks(updatedBooks);
+     try {
+
+        await API.delete(`/books/${id}`);
+
+        const res = await API.get("/books");
+
+        setBooks(res.data);
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
 
 };
 const handleEdit = (book) => {
@@ -91,16 +103,16 @@ const handleEdit = (book) => {
     {filteredBooks.map((book) => (
 
         <BookCard
-            key={book.id}
-              id={book.id}
-            title={book.title}
-            author={book.author}
-            category={book.category}
-            status={book.status}
-            progress={book.progress}
-            image={book.image}
-            onDelete={handleDelete}
-            onEdit={() => handleEdit(book)}
+            key={book._id || book.id}
+        id={book._id || book.id}
+        title={book.title}
+        author={book.author}
+        category={book.category}
+        status={book.status}
+        progress={book.progress}
+        image={book.image}
+        onDelete={handleDelete}
+        onEdit={() => handleEdit(book)}
         />
 
     ))}

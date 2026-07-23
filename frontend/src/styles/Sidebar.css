@@ -37,3 +37,16 @@
 {
     background: #334155;
 }
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.menu a.active {
+    color: #2563eb;
+    font-weight: bold;
+}

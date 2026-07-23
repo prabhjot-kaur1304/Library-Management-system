@@ -6,7 +6,7 @@ function BookCard({ id ,title, author, category, status ,progress , image , onDe
 
       <div className="book-cover">
         <img 
-        src={image}
+        src={image || "https://placehold.co/200x300?text=No+Image"}
         alt={title}
         />
       </div>

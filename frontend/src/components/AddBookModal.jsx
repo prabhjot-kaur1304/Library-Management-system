@@ -1,5 +1,7 @@
+
 import { useState } from "react";
 import "../styles/AddBookModal.css";
+import API from "../api/bookApi";
 
 function AddBookModal({ books,
     setBooks,
@@ -15,25 +17,38 @@ function AddBookModal({ books,
     status: "Available",
     progress: 0,
 });
-const handleAddBook = () => {
+const handleAddBook = async () => {
 if (selectedBook) {
-    const updatedBooks = books.map((book) =>
-            book.id === selectedBook.id
-                ? { ...selectedBook, ...newBook }
-                : book
-        );
 
-        setBooks(updatedBooks);
+    try {
+
+        await API.put(`/books/${selectedBook._id}`, newBook);
+
+        const updatedBooks = await API.get("/books");
+
+        setBooks(updatedBooks.data);
 
         setSelectedBook(null);
 
-    } else {
-    const book = {
-        id: Date.now(),
-        ...newBook
-    };
+    } catch (error) {
 
-    setBooks([...books, book]);
+        console.log(error);
+
+    }
+
+} else {
+    try {
+
+    const res = await API.post("/books", newBook);
+
+    const updatedBooks = await API.get("/books");
+setBooks(updatedBooks.data);
+
+} catch (error) {
+
+    console.log(error);
+
+}
 }
     setShowModal(false);
 };
